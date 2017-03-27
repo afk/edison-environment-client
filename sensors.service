@@ -1,8 +1,10 @@
 # Place this file in /etc/systemd/system
+# Then enable the service, run
+# $ systemctl enable sensors
 
 [Unit]
 Description=IoT Sensors
-After=iotkit-agent.service
+Requires=iotkit-agent.service
 
 [Service]
 ExecStart=/usr/bin/node /home/root/edison-environment-client/sensors.js
