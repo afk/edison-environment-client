@@ -1,0 +1,16 @@
+# Place this file in /etc/systemd/system
+
+[Unit]
+Description=IoT Sensors
+After=iotkit-agent.service
+
+[Service]
+ExecStart=/usr/bin/node /home/root/edison-environment-client/sensors.js
+Restart=always
+RestartSec=10 # Restart service after 10 seconds if node service crashes
+StandardOutput=syslog # Output to syslog
+StandardError=syslog # Output to syslog
+SyslogIdentifier=sensors
+
+[Install]
+WantedBy=multi-user.target
